@@ -23,17 +23,17 @@ namespace BackgroundJobs
         /// </summary>
         public override void Invoke(object sender, ModuleToolEventArgs e)
         {
-            if (null == Far.Net.Panel)
+            if (null == Far.Api.Panel)
             {
-                Far.Net.Message(Strings.ErrorNoPanel,
+                Far.Api.Message(Strings.ErrorNoPanel,
                                 Strings.ErrorHeader,
                                 MessageOptions.Error | MessageOptions.Ok);
                 return;
             }
 
-            if (null == Far.Net.Panel.SelectedFiles)
+            if (null == Far.Api.Panel.SelectedFiles)
             {
-                Far.Net.Message(Strings.ErrorNoFilesSelected,
+                Far.Api.Message(Strings.ErrorNoFilesSelected,
                                 Strings.ErrorHeader,
                                 MessageOptions.Error | MessageOptions.Ok);
                 return;
@@ -44,7 +44,7 @@ namespace BackgroundJobs
 
         private static void ShowOperationsMenu()
         {
-            var operationsMenu = Far.Net.CreateMenu();
+            var operationsMenu = Far.Api.CreateMenu();
             operationsMenu.Add(Strings.MenuCopy, CopyHandle);
             operationsMenu.Add(Strings.MenuMove, MoveHandle);
             operationsMenu.Add(Strings.MenuDelete, DeleteHandle);
@@ -56,9 +56,9 @@ namespace BackgroundJobs
 
         private static void CopyHandle(object sender, MenuEventArgs args)
         {
-            IPanel activePanel = Far.Net.Panel;
+            IPanel activePanel = Far.Api.Panel;
             string sourceDir = activePanel.CurrentDirectory;
-            string destDir = Far.Net.Panel2.CurrentDirectory;
+            string destDir = Far.Api.Panel2.CurrentDirectory;
 
             foreach (var file in activePanel.SelectedFiles)
             {
@@ -74,9 +74,9 @@ namespace BackgroundJobs
 
         private static void MoveHandle(object sender, EventArgs args)
         {
-            IPanel activePanel = Far.Net.Panel;
+            IPanel activePanel = Far.Api.Panel;
             string sourceDir = activePanel.CurrentDirectory;
-            string destDir = Far.Net.Panel2.CurrentDirectory;
+            string destDir = Far.Api.Panel2.CurrentDirectory;
 
             foreach (var file in activePanel.SelectedFiles)
             {
@@ -92,7 +92,7 @@ namespace BackgroundJobs
 
         private static void DeleteHandle(object sender, EventArgs args)
         {
-            IPanel activePanel = Far.Net.Panel;
+            IPanel activePanel = Far.Api.Panel;
             string sourceDir = activePanel.CurrentDirectory;
 
             foreach (var file in activePanel.SelectedFiles)
