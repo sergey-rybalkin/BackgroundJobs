@@ -16,7 +16,7 @@ namespace BackgroundJobs
     [ModuleTool(Name = "Background Jobs", Options = ModuleToolOptions.Panels)]
     public class BackgroundJobsModule : ModuleTool
     {
-        private static List<FileOperationParams> _queue = new List<FileOperationParams>();
+        private static List<FileOperationParams> _queue = new List<FileOperationParams>();                   
 
         /// <summary>
         /// Handles background jobs menu item call in panels menu.
